@@ -3749,7 +3749,8 @@ textarea.form-control-lg {
 }
 
 .dropdown-item {
-  display: block;
+  display: flex;
+  justify-content: space-between;
   width: 100%;
   padding: 0.25rem 1rem;
   clear: both;
@@ -3760,6 +3761,7 @@ textarea.form-control-lg {
   white-space: nowrap;
   background-color: transparent;
   border: 0;
+  align-items: center;
 }
 .dropdown-item:hover, .dropdown-item:focus {
   color: #1e2125;
@@ -4075,7 +4077,7 @@ textarea.form-control-lg {
   padding: 0.25rem 0.75rem;
   font-size: 1.25rem;
   line-height: 1;
-  background-color: transparent;
+  background-color: #000000b5;
   border: 1px solid transparent;
   border-radius: 0.25rem;
   transition: box-shadow 0.15s ease-in-out;
@@ -11274,4 +11276,111 @@ textarea.form-control-lg {
   .d-print-none {
     display: none !important;
   }
+}
+
+@import "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css";
+
+/* Arrange buttons */
+.btn-matrix {
+   flex-wrap: wrap; /* allow buttons to jump to another row */
+}
+.btn-matrix > .btn {
+   width: 33%; /* force buttons to have the same width regardless of content */
+}
+.btn-matrix > .btn:nth-child(3n + 4) {
+   margin-left: 0; /* because .btn-group adds `margin-left: -1px;` to all buttons */
+}
+.btn-matrix > .btn:nth-child(n + 4) {
+   margin-top: -1px; /* superimpose borders of the buttons from adjacent rows */
+}
+
+/* Fix border radius */
+.btn-matrix > .btn:first-child {
+   border-bottom-left-radius: 0;
+}
+.btn-matrix > .btn:nth-child(3) {
+   border-top-right-radius: 4px !important;
+}
+.btn-matrix > .btn:nth-last-child(3) {
+   border-bottom-left-radius: 4px !important;
+}
+.btn-matrix > .btn:last-child {
+   border-top-right-radius: 0;
+}
+
+/* Decorations */
+.btn-matrix {
+   margin: 20px;
+   max-width: 500px;
+}
+
+/* custom */
+
+.bg_form{
+  background-color: #F8F9FA;
+  margin: 100px;
+  border-radius: 15px;
+}
+
+.pre_full{
+  width: 500px;
+  width: 500px;
+}
+
+.form_content{
+  margin: 20px;
+}
+
+.title_form{
+  display: flex;
+  justify-content: center;
+}
+
+.no_list{
+  list-style-type: none
+}
+
+.center{
+  justify-content: center
+}
+
+#mantis-list{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.question{
+  display: flex;
+  justify-content: center;
+  top: 50%;
+  transform: translateY(20%);
+  
+}
+
+.case-question{
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.btn-rechercher{
+  display: flex;
+  justify-content: center;
+}
+
+.questions-tree{
+  margin-left: 10%;
+}
+
+#Q1{
+  visibility: visible;
+}
+
+#Q2{
+  visibility: hidden;
+  position: absolute;
+}
+
+#Q3{
+  visibility: visible;
 }
