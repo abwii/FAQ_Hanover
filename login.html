@@ -1,71 +1,78 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>FAQ - Login</title>
-        <link rel="icon" type="image/x-icon" href="assets/Hanover.ico" />
-        <link href="css/styles.css" rel="stylesheet" />
-    </head>
-    <body>
+{% extends "layout.html" %}
+{% block body %}
+  {{ super() }}
+  <link rel="stylesheet" href="{{url_for('static', filename='css/css/login.css')}}">
+
+<form id="login_form" class="modal-content animate" style="max-width:350px;" method="POST" action="/manager">
+    <div class="imgcontainer">
+        <img src="{{url_for('static', filename='img/hanover_logo.png')}}" alt="Hanover" class="avatar" asp-append-version="true" />
+    </div>
 
 
-        <!-- Responsive navbar-->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-light">
-            <div class="container">
-                <a class="navbar-brand" href="accueil.html"><img src="assets/HanoverFAQ.png"></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mb-2 mb-lg-0">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Consultation</a>
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="questions.html">Questions</a></li>
-                                <li><a class="dropdown-item" href="#">Placeholder</a></li>
-                                <li><hr class="dropdown-divider" /></li>
-                                <li><a class="dropdown-item" href="#">Placeholder</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Ajout & Modification</a>
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="ajout.html">Ajout</a></li>
-                                <li><a class="dropdown-item" href="modification.html">Modification</a></li>
-                                <li><hr class="dropdown-divider" /></li>
-                                <li><a class="dropdown-item" href="#">Placeholder</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Administration</a>
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="administration.html">Administration</a></li>
-                                <li><a class="dropdown-item" href="#">Placeholder</a></li>
-                                <li><hr class="dropdown-divider" /></li>
-                                <li><a class="dropdown-item" href="#">Placeholder</a></li>
-                            </ul>
-                        </li>
-                    </ul>
+    <div class="container">
+
+        <div class="form-group">
+            <label for="uname" id="uname_label" class="control-label"><b>Username</b></label>
+            <span role="alert" id="uname_error" style="color:red;">*</span>
+            <input type="text" placeholder="Enter Username" id="uname" class="form-control" style="margin-top: 0px;" name="uname" />
+        </div>
+
+        <div class="form-group">
+            <label for="psw" id="psw_label" class="control-label"><b>Password</b></label>
+            <span role="alert" id="psw_error" style="color:red;">*</span>
+            <div class="input-group">
+                <input type="password" placeholder="Enter Password" class="form-control absconditus" style="margin-top: 0px;" id="psw" name="psw" />
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-default btn-view-password" id="password_btn">
+                        <span id="psw_eye" class="fa fa-eye" aria-hidden="true"></span>
+                    </button>
                 </div>
             </div>
-        </nav>
-        <!-- End responsive navbar-->
+        </div>
 
 
+        <button class="login" type="submit" id="login_button">Login <div class='loader d-none'></div></button>
 
-        <!-- Page content-->
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <div id="alert" class="alert alert-danger" role="alert" style="text-align:center; margin-top:5px;">
+              {{ messages[0] }}
+            </div>
+          {% endif %}
+        {% endwith %}
 
-        <!-- End page content -->
+    </div>
+</form>
 
+<script type="text/javascript">
+    var login_failed = "Your login attempt was not successful.<br/>Please try again."
+    var request_failed = "Database is not responding.<br/>Please contact Hanover."
 
+    $("#uname").focusin(function () {
+        $("#uproject_error").hide();
+        $("#uname_error").hide();
+        $("#psw_error").hide();
+        $("#alert").addClass("d-none");
+    })
 
+    $("#psw").focusin(function () {
+        $("#uproject_error").hide();
+        $("#uname_error").hide();
+        $("#psw_error").hide();
+        $("#alert").addClass("d-none");
+    })
 
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
-        <!-- End bootstrap core JS -->
+    //Show/hide Password  
+    $('#password_btn').click(function () {
+        if ($('#psw').prop('type') == 'password') {
+            $('#psw').attr('type', 'text')
+            $('#psw_eye').removeClass('fa fa-eye').addClass('fa fa-eye-slash')
+        }
+        else {
+            $('#psw').attr('type', 'password')
+            $('#psw_eye').removeClass('fa fa-eye-slash').addClass('fa fa-eye')
+        }
+    })
+</script>
 
-    </body>
-</html>
+{% endblock %}

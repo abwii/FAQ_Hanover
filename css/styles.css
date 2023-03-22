@@ -3260,6 +3260,7 @@ textarea.form-control-lg {
 .btn-outline-primary {
   color: #0d6efd;
   border-color: #0d6efd;
+  /* border-radius: 100px; */
 }
 .btn-outline-primary:hover {
   color: #fff;
@@ -11362,6 +11363,9 @@ textarea.form-control-lg {
 .case-question{
   vertical-align: middle;
   cursor: pointer;
+  border: solid;
+  margin: 8px;
+  border-width: 2px;
 }
 
 .btn-rechercher{
@@ -11376,6 +11380,7 @@ textarea.form-control-lg {
 
 .question-form{
   visibility: visible;
+  border: #000;
 }
 
 .question-form-invisible{
