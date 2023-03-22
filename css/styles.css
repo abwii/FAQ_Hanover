@@ -11334,6 +11334,7 @@ textarea.form-control-lg {
 .title_form{
   display: flex;
   justify-content: center;
+  margin: 20px;
 }
 
 .no_list{
@@ -11365,22 +11366,23 @@ textarea.form-control-lg {
 
 .btn-rechercher{
   display: flex;
-  justify-content: center;
+  margin-left: auto;
+  margin-right: 50px;
 }
 
 .questions-tree{
   margin-left: 10%;
 }
 
-#Q1{
+.question-form{
   visibility: visible;
 }
 
-#Q2{
+.question-form-invisible{
   visibility: hidden;
   position: absolute;
 }
 
-#Q3{
-  visibility: visible;
+.zone-questions{
+  margin: 80px;
 }
